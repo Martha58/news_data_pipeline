@@ -52,6 +52,16 @@ def scrapped_data():
     # article_data.to_csv('punchNews.csv', index=False) 
     return article_data
 article_data = scrapped_data()
+
+from nltk.corpus import stopwords
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('vader_lexicon')
+nltk.download('punkt_tab')
     
 def sentiment_analysis(article_data):
     def preprocessed_text(text):
