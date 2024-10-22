@@ -1,32 +1,35 @@
-name: run main.py
+run-name: run main.py
 
 on:
     schedule:
         - cron: 00 12 * * *
         - cron: 00 09 * * *
         - cron: 00 15 * * *
-    workflow_dispatch:
     
+    workflow_dispatch:
+
 jobs:
     build:
         runs-on: ubuntu-latest
         
         env:
-            DB_HOST: ${{ secrets.DB_HOST }}
-            DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-            DB_PORT: ${{ secrets.DB_PORT }}
-            DB_USER: ${{ secrets.DB_USER }}
+            DB_HOST: mysql-25f2cd8a-marthafridayimoh-f81c.i.aivencloud.com
+            DB_PASSWORD: AVNS_f8K7pB8-jd9Y1qopLcp
+            DB_PORT: 14484
+            DB_USER: avnadmin
 
         steps:
-            - name: Checkout repo
-              uses: actions/checkout@v2
-            - name: Set up Python
-              uses: actions/setup-python@v2
-              with:
-                python-version: '3.12'
-            - name: Install dependencies
-              run: |
+        - name: Checkout repo
+          uses: actions/checkout@v2
+        - name: Set up Python
+          uses: actions/setup-python@v2
+          with:
+                python-version: '3.12' 
+        - name: Install dependencies
+          run: |
                   python -m pip install --upgrade pip
                   pip install -r requirements.txt
-            - name: Run code
-              run: python main.py
+        - name: Run code
+          run: python main.py
+
+
