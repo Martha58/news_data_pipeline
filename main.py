@@ -19,7 +19,6 @@ def scrapped_data():
     article_container = soup.find_all('h1', class_='post-title')
 
     links = [container.find('a')['href'] for container in article_container]
-    print(f'Links: {links}')
 
     article_link = []
     writers_name = []
@@ -41,12 +40,6 @@ def scrapped_data():
         date = datetime.strptime(date_str, '%d %B %Y')
         date_posted.append(date.strftime('%Y-%m-%d'))
         article.append(soup.find('div', class_='post-content').get_text(strip=True))
-
-        print(f'Article_link: {article_link}')
-        print(f'Writers_name: {writers_name}')
-        print(f'Title: {title}')
-        print(f'Date posted: {date_posted}')
-        print(f'Article: {article}')
 
     article_data = pd.DataFrame({
         'article_link' : article_link,
