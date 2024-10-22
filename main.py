@@ -120,7 +120,7 @@ def save_to_db():
         host=os.getenv("DB_HOST"),
         password=os.getenv("DB_PASSWORD"),
         read_timeout=timeout,
-        port=int(os.getenv("DB_PORT")),
+        port=14484,
         user=os.getenv("DB_USER"),
         write_timeout=timeout,
     )
